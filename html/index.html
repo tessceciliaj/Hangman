@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap 4 CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>Hangman</title>
 </head>
+
 <body>
     <div class="container">
         <h1 class="text-center">Hangman</h1>
         <div class="float-right">Wrong Guesses: <span id="mistakes">0</span> of <span id="maxWrong">6</span></div>
         <div class="text-center">
             <img id="hangmanPic" src="../img/0.jpg" alt="">
-            <p>Guess The Programming Language:</p>
+            <p id="info-parapraph">A man is about to die because of one deadly sin.
+                <br>Guess wich one or help kill him.
+            </p>
             <p id="wordSpotlight">The Word To Be Guessed Goes Here</p>
             <div id="keyboard"></div>
             <button class="btn btn-info" onClick="reset()">Reset</button>
@@ -22,4 +26,5 @@
     </div>
     <script src="../js/hangman.js"></script>
 </body>
+
 </html>

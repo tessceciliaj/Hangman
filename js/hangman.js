@@ -1,12 +1,13 @@
-let programming_languages = [
-    "python",
-    "javascript",
-    "java",
-    "html",
-    "css",
-    "csharp",
-    "kotlin",
-    "php"
+// I remember that arrays should'nt be consts. In this case it works because the 7 deadly sins is always 7. 
+
+const DEADLY_SINS = [
+    "pride",
+    "greed",
+    "lust",
+    "envy",
+    "gluttony",
+    "wrath",
+    "sloth"
 ]
 
 let answer = "";
@@ -16,18 +17,18 @@ let guessed = [];
 let wordStatus = null;
 
 function randomWord() {
-    answer = programming_languages[Math.floor(Math.random() * programming_languages.length)];
+    answer = DEADLY_SINS[Math.floor(Math.random() * DEADLY_SINS.length)];
 }
 
 function generateButtons() {
-    let buttonsHTML = "abcdefghijklmnopqrstuvxyz".split("").map(letter =>
+    let buttonsHTML = "abcdefghijklmnopqrstuvwxyz".split("").map(letter =>
         `
     <button
-      class="btn btn-lg btn-primary m-2"
-      id='` + letter + `'
-      onClick="handleGuess('` + letter + `')"
+      class="btn"
+      id='${letter}'
+      onClick="handleGuess('${letter}')"
     >
-    ` + letter + `
+    ${letter}
     </button>
     `).join("");
 
@@ -57,20 +58,18 @@ function guessedWord() {
     wordStatus = answer.split("").map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join("");
 
     document.getElementById("wordSpotlight").innerHTML = wordStatus;
-
 }
 
 function checkIfGameLost() {
     if (mistakes === maxWrong) {  
-        document.getElementById("wordSpotlight").innerHTML = 'The answer was: ' + answer;
-        document.getElementById("keyboard").innerHTML = "Better Luck Next Time!"
-      
+        document.getElementById("wordSpotlight").innerHTML = "He died because of to much: " + answer;
+        document.getElementById("keyboard").innerHTML = "You did this on purpuse didnt you?"
     }
 }
 
 function checkIfGameWon() {
     if (wordStatus === answer) {
-        document.getElementById("keyboard").innerHTML = "You Guessed Right!!!"
+        document.getElementById("keyboard").innerHTML = "You saved him even though he was doomed by " + answer + ". You are a humble person.";
     }
 }
 
@@ -94,6 +93,5 @@ document.getElementById("maxWrong").innerHTML = maxWrong;
 randomWord();
 generateButtons();
 guessedWord();
-handleGuess();
 
 
