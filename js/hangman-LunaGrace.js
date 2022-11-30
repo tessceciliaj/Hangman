@@ -61,15 +61,17 @@ function guessedWord() {
 }
 
 function checkIfGameLost() {
-    if (mistakes === MAXWRONG) {  
+    if (mistakes === MAXWRONG) {
         document.getElementById("wordSpotlight").innerHTML = "He died because of to much: " + answer;
-        document.getElementById("keyboard").innerHTML = "You did this on purpuse didnt you?"
+        document.getElementById("keyboard").innerHTML = "You did this on purpose didnt you?"
+        document.getElementById("hangman-title").innerHTML = "Deadman";
     }
 }
 
 function checkIfGameWon() {
     if (wordStatus === answer) {
         document.getElementById("keyboard").innerHTML = "You saved him even though he was doomed by " + answer + ". You are a humble person.";
+        document.getElementById("hangman-title").innerHTML = "Saveman";
     }
 }
 
