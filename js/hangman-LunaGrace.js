@@ -11,7 +11,7 @@ const DEADLY_SINS = [
 ]
 
 let answer = "";
-let maxWrong = 6;
+const MAXWRONG = 6;
 let mistakes = 0;
 let guessed = [];
 let wordStatus = null;
@@ -61,7 +61,7 @@ function guessedWord() {
 }
 
 function checkIfGameLost() {
-    if (mistakes === maxWrong) {  
+    if (mistakes === MAXWRONG) {  
         document.getElementById("wordSpotlight").innerHTML = "He died because of to much: " + answer;
         document.getElementById("keyboard").innerHTML = "You did this on purpuse didnt you?"
     }
@@ -88,10 +88,8 @@ function reset() {
     generateButtons();
 }
 
-document.getElementById("maxWrong").innerHTML = maxWrong;
+document.getElementById("maxWrong").innerHTML = MAXWRONG;
 
 randomWord();
 generateButtons();
 guessedWord();
-
-
