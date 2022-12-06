@@ -1,5 +1,4 @@
 // I remember that arrays should'nt be consts. In this case it works because the 7 deadly sins is always 7. 
-// I have reset button instead of cancel button.
 
 const DEADLY_SINS = [
     "pride",
@@ -44,7 +43,16 @@ handleGuess = (chosenLetter) => {
         guessedWord();
         checkIfGameWon();
     } else if (answer.indexOf(chosenLetter) === -1) {
-        mistakes++;
+        while (mistakes < MAXWRONG) {
+            let stressfulWarning = [
+                `OH NO, soon he is dead... ${mistakes + 1} mistakes out of ${MAXWRONG}. Sharpen your mind!`,
+                ` One mistake closer to kill him! `,
+                `${mistakes + 1} mistakes out of ${MAXWRONG}. Stressed out? `,
+                `Can you really have this on your consciousness?`
+            ];
+            mistakes++;
+            alert(stressfulWarning[Math.floor(Math.random() * stressfulWarning.length)]);
+        }
         updateMistakes();
         checkIfGameLost();
         updateHangmanPicture();
@@ -67,14 +75,11 @@ checkIfGameLost = () => {
         document.getElementById("keyboard").innerHTML = "You did this on purpose didnt you?";
         document.getElementById("hangman-title").innerHTML = "Deadman";
         for (let i = 0; i < DEADLY_SINS.length; i++) {
-            document.getElementById("show-sins").innerHTML += DEADLY_SINS[i] + ".  ";
-            /*
-            while (mistakes === MAXWRONG) {
-                DEADLY_SINS[i] = DEADLY_SINS[i].charAt(0).toUpperCase() + DEADLY_SINS[i].slice(1);
-            } */
+            document.getElementById("show-sins").innerHTML += DEADLY_SINS[i].charAt(0).toUpperCase() + DEADLY_SINS[i].slice(1) + ". ";
         }
     }
 }
+
 
 
 checkIfGameWon = () => {
@@ -83,8 +88,6 @@ checkIfGameWon = () => {
         document.getElementById("hangman-title").innerHTML = "Saveman";
     }
 }
-
-// Why doesnt While loop work on the one above?
 
 updateMistakes = () => {
     document.getElementById("mistakes").innerHTML = mistakes;
