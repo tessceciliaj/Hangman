@@ -8,7 +8,7 @@ const DEADLY_SINS = [
     "gluttony",
     "wrath",
     "sloth"
-]
+];
 
 const MAXWRONG = 6;
 let answer = "";
@@ -43,16 +43,14 @@ handleGuess = (chosenLetter) => {
         guessedWord();
         checkIfGameWon();
     } else if (answer.indexOf(chosenLetter) === -1) {
-        while (mistakes < MAXWRONG) {
-            let stressfulWarning = [
-                `OH NO, soon he is dead... ${mistakes + 1} mistakes out of ${MAXWRONG}. Sharpen your mind!`,
-                ` One mistake closer to kill him! `,
-                `${mistakes + 1} mistakes out of ${MAXWRONG}. Stressed out? `,
-                `Can you really have this on your consciousness?`
-            ];
-            mistakes++;
-            alert(stressfulWarning[Math.floor(Math.random() * stressfulWarning.length)]);
-        }
+        let stressfulWarning = [
+            `OH NO, soon he is dead... ${mistakes + 1} mistakes out of ${MAXWRONG}. Sharpen your mind!`,
+            ` One mistake closer to kill him! `,
+            `${mistakes + 1} mistakes out of ${MAXWRONG}. Stressed out? `,
+            `Can you really have this on your consciousness?`
+        ];
+        mistakes++;
+        alert(stressfulWarning[Math.floor(Math.random() * stressfulWarning.length)]);
         updateMistakes();
         checkIfGameLost();
         updateHangmanPicture();
@@ -71,7 +69,7 @@ guessedWord = () => {
 
 checkIfGameLost = () => {
     if (mistakes === MAXWRONG) {
-        document.getElementById("wordSpotlight").innerHTML = "He died because of to much: " + answer;
+        document.getElementById("wordSpotlight").innerHTML = `He died because of to much:  ${answer}`;
         document.getElementById("keyboard").innerHTML = "You did this on purpose didnt you?";
         document.getElementById("hangman-title").innerHTML = "Deadman";
         for (let i = 0; i < DEADLY_SINS.length; i++) {
@@ -84,7 +82,7 @@ checkIfGameLost = () => {
 
 checkIfGameWon = () => {
     if (wordStatus === answer) {
-        document.getElementById("keyboard").innerHTML = "You saved him even though he was doomed by " + answer + ". You are a humble person.";
+        document.getElementById("keyboard").innerHTML = `You saved him even though he was doomed by ${answer}. You are a humble person.`;
         document.getElementById("hangman-title").innerHTML = "Saveman";
     }
 }
