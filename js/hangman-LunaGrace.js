@@ -78,8 +78,6 @@ checkIfGameLost = () => {
     }
 }
 
-
-
 checkIfGameWon = () => {
     if (wordStatus === answer) {
         document.getElementById("keyboard").innerHTML = `You saved him even though he was doomed by ${answer}. You are a humble person.`;
@@ -90,7 +88,6 @@ checkIfGameWon = () => {
 updateMistakes = () => {
     document.getElementById("mistakes").innerHTML = mistakes;
 }
-
 
 reset = () => {
     mistakes = 0;
